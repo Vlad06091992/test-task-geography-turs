@@ -53,7 +53,7 @@ button {
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    max-width: 100%;
 }
 
 table, th, td {
@@ -61,6 +61,8 @@ table, th, td {
 }
 
 th, td {
+    width: 100px;
+    height: 100px;
     padding: 10px;
     text-align: center;
 }
