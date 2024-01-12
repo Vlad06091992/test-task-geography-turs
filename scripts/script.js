@@ -8,19 +8,22 @@ const todayButton = document.querySelector('.today')
 nextMonthButton.addEventListener('click',()=>{
     setCurrentDate('next')
     dateSpan.textContent = `${currentMonth} ${currentYear}`
-    console.log(getMonthData(currentYear,currentMonthIndex))
+    getMonthData(currentYear,currentMonthIndex)
+    console.log(daysInMonth,firstMondayDate)
 })
 
 prevMonthButton.addEventListener('click',()=>{
     setCurrentDate('prev')
     dateSpan.textContent = `${currentMonth} ${currentYear}`
-    console.log(getMonthData(currentYear,currentMonthIndex))
+    getMonthData(currentYear,currentMonthIndex)
+    console.log(daysInMonth,firstMondayDate)
 })
 
 todayButton.addEventListener('click',()=>{
     setCurrentDate('today')
     dateSpan.textContent = `${currentMonth} ${currentYear}`
-    console.log(getMonthData(currentYear,currentMonthIndex))
+    getMonthData(currentYear,currentMonthIndex)
+    console.log(daysInMonth,firstMondayDate)
 })
 
 
