@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.header {
+    padding: 10px;
+    padding-top: 40px;
+    height: 50px;
+    background: rgba(128, 128, 128, 0.2);
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_buttons {
+    color: white;
+    border: none;
+    background: #296bd5;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.inputWrapper {
+    position: relative;
+    bottom: 3px;
+}
+
+.logoWrapper {
+}
+
+.prevMonthButton {
+    margin-right: 10px
+}
+
+.nextMonthButton {
+    margin-left: 10px
+}
+
+.prevMonthButton, .nextMonthButton {
+    border-radius: 3px;
+    background: white;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
