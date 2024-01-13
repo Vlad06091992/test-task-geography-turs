@@ -70,3 +70,7 @@ th, td {
 .active-months{
     color:green;
 }
+
+.todayDay{
+    color:red
+}

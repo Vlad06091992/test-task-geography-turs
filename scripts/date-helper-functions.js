@@ -3,7 +3,7 @@ Date.prototype.daysInMonth = function () {
 };
 
 function getMonthData() {
-    const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1,-1);
+    const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1, -1);
     daysInMonth = currentDate.daysInMonth()
     const dayOfWeek = firstDayOfMonth.getDay();
     const daysToAdd = dayOfWeek === 0 ? 1 : 8 - dayOfWeek;
@@ -36,13 +36,16 @@ const setCurrentDate = (to) => {
     updateDate()
 }
 
+
 function iterateDaysInCalendar() {
+    getTodayDate()
 
     for (let i = 1; i <= 42; i++) {
         const el = document.getElementById(`${i}`)
         const divEl = el.querySelector('div');
         divEl.textContent = ''
         divEl.classList.remove('active-months')
+        divEl.classList.remove('todayDay')
     }
 
     let index = 1
@@ -50,6 +53,16 @@ function iterateDaysInCalendar() {
         if (index > daysInMonth) break
         let el = document.getElementById(`${i}`)
         const divEl = el.querySelector('div');
+
+
+        if (i === todayDayIndex) {
+            let el = document.getElementById(`${i}`)
+            const divEl = el.querySelector('div');
+            if (currentDate.getUTCMonth() === new Date().getUTCMonth()) {
+                divEl.classList.add('todayDay')
+
+            }
+        }
         divEl.classList.add('active-months')
         divEl.textContent = index.toString()
         index++
@@ -57,3 +70,8 @@ function iterateDaysInCalendar() {
     }
 }
 
+function getTodayDate() {
+    const currentDate = new Date();
+    const dayOfMonth = currentDate.getDate();
+    todayDayIndex = Math.min(Math.max(dayOfMonth, 1), 31)
+}

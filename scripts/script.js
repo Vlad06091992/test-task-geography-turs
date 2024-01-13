@@ -9,6 +9,8 @@ const todayButton = document.querySelector('.today')
 getMonthData()
 iterateDaysInCalendar()
 
+console.log(todayDayIndex)
+
 const changeMonthHandler = (arg) => {
     setCurrentDate(arg)
     dateSpan.textContent = `${currentMonth} ${currentYear}`
