@@ -1,6 +1,4 @@
-Date.prototype.daysInMonth = function () {
-    return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
-};
+
 
 const monthsRu = {
     0: 'Январь',
@@ -33,39 +31,10 @@ const monthsEn = {
     11: 'December'
 };
 
-let currentDate = new Date()
-let currentYear = currentDate.getUTCFullYear()
-let currentMonthIndex = currentDate.getUTCMonth()
-let currentMonth = monthsRu[currentMonthIndex]
-let daysInMonth
-let firstMondayDate
-
-function getMonthData() {
-    const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1,-1);
-    daysInMonth = currentDate.daysInMonth()
-    const dayOfWeek = firstDayOfMonth.getDay();
-    const daysToAdd = dayOfWeek === 0 ? 1 : 8 - dayOfWeek;
-    console.log(new Date(2023, 0, daysToAdd).toString().split(' ')[2][1])
-    firstMondayDate = +(new Date(currentYear, currentMonthIndex - 1, daysToAdd).toString().split(' ')[2][1]);
-    if (firstMondayDate === 8) {
-        firstMondayDate = 1
-    }
-}
-
-function updateDate() {
-    currentYear = currentDate.getUTCFullYear();
-    currentMonthIndex = currentDate.getUTCMonth();
-    currentMonth = monthsRu[currentMonthIndex];
-}
 
 
-const setCurrentDate = (to) => {
-    if (to === 'today') {
-        currentDate = new Date()
-    } else {
-        currentDate.setMonth(currentDate.getMonth() + (to === 'next' ? +1 : -1))
-    }
-    updateDate()
-}
+
+
+
 
 
