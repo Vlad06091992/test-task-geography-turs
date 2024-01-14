@@ -3,13 +3,12 @@ dateSpan.textContent = `${currentMonth} ${currentYear}`
 
 const nextMonthButton = document.querySelector('.nextMonthButton')
 const prevMonthButton = document.querySelector('.prevMonthButton')
-const todayButton = document.querySelector('.today')
+const todayButton = document.querySelector('.todayButton')
 
 
 getMonthData()
 iterateDaysInCalendar()
 
-console.log(todayDayIndex)
 
 const changeMonthHandler = (arg) => {
     setCurrentDate(arg)

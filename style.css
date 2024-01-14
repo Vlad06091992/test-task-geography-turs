@@ -7,12 +7,28 @@ button {
 }
 
 .header {
-    padding: 10px;
-    padding-top: 40px;
+    padding: 20px 10px;
+    /*padding-top: 40px;*/
     height: 50px;
     background: rgba(128, 128, 128, 0.2);
+
+}
+
+.header_container {
     display: flex;
     justify-content: space-between;
+    width: 850px;
+    margin: 0 auto;
+}
+
+.navigation_container {
+    position: relative;
+    width: 850px;
+    margin: 10px auto;
+}
+
+.dateNavigation {
+    margin: 10px 22%;
 }
 
 .header_buttons {
@@ -42,7 +58,13 @@ button {
 }
 
 .nextMonthButton {
-    margin-left: 10px
+    position: absolute;
+    left: 145px;
+}
+
+.todayButton {
+    position: absolute;
+    left: 180px;
 }
 
 .prevMonthButton, .nextMonthButton {
@@ -56,21 +78,60 @@ table {
     max-width: 100%;
 }
 
+.tableWrapper {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 
 th, td {
+    font-weight: normal;
+    position: relative;
     width: 100px;
     height: 100px;
     padding: 10px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
-.active-months{
-    color:green;
+.active-months {
+    font-weight: 600;
 }
 
-.todayDay{
-    color:red
+.not-active-months {
+    font-weight: normal;
+    color: grey;
+}
+
+.todayDay {
+    font-size: 120%;
+}
+
+.dayOfWeek {
+    text-align: left;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+}
+
+.notActiveCell {
+    background: #e6e1e1;
+}
+
+.todayCell {
+    background: #296bd5;
+}
+
+.numberOfMonth {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.numberOfMonthTh {
+    position: absolute;
+    left: 85%;
+    top: 0;
 }
