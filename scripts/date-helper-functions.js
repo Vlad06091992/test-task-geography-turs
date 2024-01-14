@@ -42,6 +42,8 @@ function iterateDaysInCalendar() {
 
     for (let i = 1; i <= 42; i++) {
         const el = document.getElementById(`${i}`)
+        el.querySelector('.author').textContent = ''
+        el.querySelector('.description').textContent = ''
         el.classList.remove('notActiveCell')
         el.classList.remove('todayCell')
         const divEl = el.querySelector('.numberOfMonth');
@@ -50,6 +52,9 @@ function iterateDaysInCalendar() {
         divEl.classList.remove('todayDay')
     }
 
+// debugger
+
+
     let index = 1
     let firstDayOfWeekIndex = getFirstDayOfWeekIndex(currentYear, currentMonthIndex);
 
@@ -57,6 +62,7 @@ function iterateDaysInCalendar() {
         const daysToFill = firstDayOfWeekIndex - 1
         let daysInPrevMonth = new Date(currentYear, currentMonthIndex - 1).daysInMonth()
         for (let i = daysInPrevMonth - daysToFill + 1; i <= daysInPrevMonth; i++) {
+
             let el = document.getElementById(`${index}`)
             el.classList.add('notActiveCell')
             const divEl = el.querySelector('.numberOfMonth');
@@ -70,13 +76,29 @@ function iterateDaysInCalendar() {
     index = 1
 
     for (let i = firstDayOfWeekIndex; i <= daysInMonth + firstDayOfWeekIndex; i++) {
+        //currentMonthIndex -- index итерируемого месяца
+        //i -- день в итерируемом месяце
+
+        for(let j = 0; j < events.length;j++){
+            console.log(events[j].date.month)
+            console.log(events[j].date.numberOfMonth)
+
+
+            if(events[j].date.month === currentMonthIndex && events[j].date.numberOfMonth === i){
+                let el = document.getElementById(`${i}`)
+                       el.querySelector('.author').textContent = events[j].author
+                       el.querySelector('.description').textContent = events[j].eventDescription
+            }
+        }
+
         if (index > daysInMonth) break
         let el = document.getElementById(`${i}`)
         const divEl = el.querySelector('.numberOfMonth');
 
+
+
         if (i === todayDayIndex) {
             let el = document.getElementById(`${i}`)
-
             const divEl = el.querySelector('.numberOfMonth');
             if (currentDate.getUTCMonth() === new Date().getUTCMonth() &&   new Date().getUTCFullYear() === currentYear) {
                 divEl.classList.add('todayDay')

@@ -1,5 +1,3 @@
-
-
 const monthsRu = {
     0: 'Январь',
     1: 'Февраль',
@@ -14,7 +12,6 @@ const monthsRu = {
     10: 'Ноябрь',
     11: 'Декабрь'
 };
-
 
 const monthsEn = {
     0: 'January',
