@@ -76,16 +76,18 @@ function iterateDaysInCalendar() {
     index = 1
 
     for (let i = firstDayOfWeekIndex; i <= daysInMonth + firstDayOfWeekIndex; i++) {
-        for(let j = 0; j < events.length;j++){
+        for (let j = 0; j < events.length; j++) {
             console.log(currentYear)
             console.log(currentMonthIndex)
             console.log(firstDayOfWeekIndex)
 
-            if(events[j].date.month === currentMonthIndex && events[j].date.numberOfMonth + firstDayOfWeekIndex - 1 === i){
+            if (events[j].date.month === currentMonthIndex
+                && events[j].date.numberOfMonth + firstDayOfWeekIndex - 1 === i &&
+                events[j].date.year === currentYear) {
 
                 let el = document.getElementById(`${i}`)
-                       el.querySelector('.author').textContent = events[j].author
-                       el.querySelector('.description').textContent = events[j].eventDescription
+                el.querySelector('.author').textContent = events[j].author
+                el.querySelector('.description').textContent = events[j].eventDescription
             }
         }
 
@@ -96,7 +98,7 @@ function iterateDaysInCalendar() {
         if (i === todayDayIndex) {
             let el = document.getElementById(`${i}`)
             const divEl = el.querySelector('.numberOfMonth');
-            if (currentDate.getUTCMonth() === new Date().getUTCMonth() &&   new Date().getUTCFullYear() === currentYear) {
+            if (currentDate.getUTCMonth() === new Date().getUTCMonth() && new Date().getUTCFullYear() === currentYear) {
                 divEl.classList.add('todayDay')
                 el.classList.add('todayCell')
             }

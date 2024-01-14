@@ -44,6 +44,7 @@ createEventButton.addEventListener('click', () => {
     console.log(events)
     iterateDaysInCalendar()
     formEvent.classList.remove('form-event-show')
+    dateInput.value = authorInput.value = eventInput.value = ''
 })
 
 addButton.addEventListener('click',()=>{
