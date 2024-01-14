@@ -5,3 +5,4 @@ let currentMonth = monthsRu[currentMonthIndex]
 let daysInMonth
 let firstMondayDate
 let todayDayIndex
+let searchString

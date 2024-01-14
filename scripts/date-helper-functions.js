@@ -77,10 +77,6 @@ function iterateDaysInCalendar() {
 
     for (let i = firstDayOfWeekIndex; i <= daysInMonth + firstDayOfWeekIndex; i++) {
         for (let j = 0; j < events.length; j++) {
-            console.log(currentYear)
-            console.log(currentMonthIndex)
-            console.log(firstDayOfWeekIndex)
-
             if (events[j].date.month === currentMonthIndex
                 && events[j].date.numberOfMonth + firstDayOfWeekIndex - 1 === i &&
                 events[j].date.year === currentYear) {
@@ -117,12 +113,12 @@ function iterateDaysInCalendar() {
         for (let i = index; i <= 42; i++) {
             let el = document.getElementById(`${i}`)
             el.classList.add('notActiveCell')
-            const divEl = el.querySelector('div');
-            divEl.classList.add('not-active-months')
+            const divEl = el.querySelector('.numberOfMonth');
+            // divEl.classList.add('not-active-months')
+            // divEl.classList.add('numberOfMonth')
             divEl.textContent = nextMonthStart.toString()
             nextMonthStart++
             el.appendChild(divEl)
-
         }
     }
 }
@@ -131,4 +127,28 @@ function getTodayDate() {
     const currentDate = new Date();
     const dayOfMonth = currentDate.getDate();
     todayDayIndex = Math.min(Math.max(dayOfMonth, 1), 31)
+}
+
+function findDate(arg) {
+    const [daySearch,monthSearch,yearSearch] = arg.split(' ')
+    let year
+    let month
+    let numberOfMonth
+    events.forEach(el => {
+        if (el.author.toLowerCase().indexOf(arg.toLowerCase()) > -1  || el.eventDescription.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+            year = el.date.year
+            month = el.date.month
+            numberOfMonth = el.date.numberOfMonth
+            return
+        }
+
+
+        if(+daySearch === el.date.numberOfMonth && el.date.month === +monthsRuWithDeclination[monthSearch] && +yearSearch === el.date.year ){
+            year = el.date.year
+            month = el.date.month
+            numberOfMonth = el.date.numberOfMonth
+        }
+
+    })
+    return {month,year,numberOfMonth}
 }

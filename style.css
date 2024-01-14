@@ -7,10 +7,10 @@ button {
     cursor: pointer;
 }
 
-.form-event{
+.form-event {
     display: none;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     background: rgba(128, 128, 128, 0.5);
     z-index: 1;
@@ -18,11 +18,12 @@ button {
     height: 100vh;
 }
 
-.form-event-show{
+.form-event-show {
     display: block;
 }
 
 .form {
+    padding: 10px;
     border-radius: 3px;
     border: 1px solid #296bd5;
     position: fixed;
@@ -30,10 +31,15 @@ button {
     top: 10%;
     left: 40%;
     width: 300px;
-    height: 600px;
+    height: 200px;
     background-color: white;
     z-index: 100;
 }
+
+.formButtons{
+    margin-top:20px;
+}
+
 .header {
     padding: 20px 10px;
     height: 50px;
@@ -119,7 +125,6 @@ th, td {
     width: 100px;
     height: 100px;
     padding: 10px;
-    /*text-align: center;*/
 }
 
 .active-months {
@@ -127,6 +132,9 @@ th, td {
 }
 
 .not-active-months {
+    position: absolute;
+    left: 5%;
+    top: 0;
     font-weight: normal;
     color: grey;
 }
@@ -144,6 +152,10 @@ th, td {
 
 .notActiveCell {
     background: #e6e1e1;
+}
+
+.activeCell {
+    background: green;
 }
 
 .todayCell {
