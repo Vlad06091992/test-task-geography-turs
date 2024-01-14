@@ -76,15 +76,13 @@ function iterateDaysInCalendar() {
     index = 1
 
     for (let i = firstDayOfWeekIndex; i <= daysInMonth + firstDayOfWeekIndex; i++) {
-        //currentMonthIndex -- index итерируемого месяца
-        //i -- день в итерируемом месяце
-
         for(let j = 0; j < events.length;j++){
-            console.log(events[j].date.month)
-            console.log(events[j].date.numberOfMonth)
+            console.log(currentYear)
+            console.log(currentMonthIndex)
+            console.log(firstDayOfWeekIndex)
 
+            if(events[j].date.month === currentMonthIndex && events[j].date.numberOfMonth + firstDayOfWeekIndex - 1 === i){
 
-            if(events[j].date.month === currentMonthIndex && events[j].date.numberOfMonth === i){
                 let el = document.getElementById(`${i}`)
                        el.querySelector('.author').textContent = events[j].author
                        el.querySelector('.description').textContent = events[j].eventDescription
@@ -94,8 +92,6 @@ function iterateDaysInCalendar() {
         if (index > daysInMonth) break
         let el = document.getElementById(`${i}`)
         const divEl = el.querySelector('.numberOfMonth');
-
-
 
         if (i === todayDayIndex) {
             let el = document.getElementById(`${i}`)

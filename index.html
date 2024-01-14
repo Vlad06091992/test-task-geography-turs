@@ -10,7 +10,7 @@
 <header class="header">
     <div class="header_container">
         <div>
-            <button class="header_buttons">добавить</button>
+            <button class="addButton header_buttons">добавить</button>
             <button class="header_buttons">обновить</button>
         </div>
         <div class="search">
@@ -25,24 +25,33 @@
     </div>
 </header>
 <main>
-<!--    <div class="form-event">-->
-<!--        <div class="form">-->
-<!--                <div>-->
-<!--                    выберите дату-->
-<!--                    <input class="dateInput" type="date">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    введите участника-->
-<!--                    <input class="authorInput" type="text">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    введите событие-->
-<!--                    <input type="text" class="eventInput">-->
-<!--                </div>-->
+    <div class="form-event">
+        <div class="form">
+                <div>
+                    выберите дату
 
-<!--                <button type="button" class="createEvent"></button>-->
-<!--        </div>-->
-<!--    </div>-->
+                    <div>
+                        <input class="dateInput" type="date">
+                    </div>
+                </div>
+                <div>
+                    введите участника
+                    <div>
+                        <input class="authorInput" type="text">
+                    </div>
+                </div>
+                <div>
+                    введите событие
+                    <div>
+                        <input type="text" class="eventInput">
+
+                    </div>
+                </div>
+
+                <button type="button" class="createEvent">Добавить событие</button>
+                <button type="button" class="cancel">Отмена</button>
+        </div>
+    </div>
     <div class="navigation_container">
         <div>
             <button class="prevMonthButton">
@@ -63,8 +72,8 @@
                 <th id="1">
                     <div class="dayOfWeek">Понедельник</div>
                     <div class="numberOfMonth numberOfMonthTh"></div>
-                    <div class="author">Влад</div>
-                    <div class="description">Купить хлеб</div>
+                    <div class="author"></div>
+                    <div class="description"></div>
                 </th>
                 <th id="2">
                     <div class="dayOfWeek">Вторник</div>

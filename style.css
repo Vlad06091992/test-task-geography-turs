@@ -8,7 +8,7 @@ button {
 }
 
 .form-event{
-    /*display: none;*/
+    display: none;
     position: fixed;
     top:0;
     left: 0;
@@ -16,6 +16,10 @@ button {
     z-index: 1;
     width: 100vw;
     height: 100vh;
+}
+
+.form-event-show{
+    display: block;
 }
 
 .form {
