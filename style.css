@@ -7,7 +7,7 @@ button {
     cursor: pointer;
 }
 
-.form-event {
+.formEvent {
     display: none;
     position: fixed;
     top: 0;
@@ -18,7 +18,7 @@ button {
     height: 100vh;
 }
 
-.form-event-show {
+.formEventShow {
     display: block;
 }
 
@@ -36,6 +36,13 @@ button {
     z-index: 100;
 }
 
+.formTitle{
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 5px 0;
+    text-align: center;
+}
+
 .formButtons{
     margin-top:20px;
 }
@@ -46,14 +53,14 @@ button {
     background: rgba(128, 128, 128, 0.2);
 }
 
-.header_container {
+.headerContainer {
     display: flex;
     justify-content: space-between;
     width: 850px;
     margin: 0 auto;
 }
 
-.navigation_container {
+.navigationContainer {
     position: relative;
     width: 850px;
     margin: 10px auto;
@@ -63,12 +70,17 @@ button {
     margin: 10px 22%;
 }
 
-.header_buttons {
+.controlButtons {
     color: white;
     border: none;
     background: #296bd5;
     padding: 5px;
     border-radius: 2px;
+}
+
+.controlButtons:disabled{
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .search {
@@ -127,11 +139,11 @@ th, td {
     padding: 10px;
 }
 
-.active-months {
+.activeMonths {
     font-weight: 600;
 }
 
-.not-active-months {
+.notActiveMonths {
     position: absolute;
     left: 5%;
     top: 0;
@@ -146,7 +158,7 @@ th, td {
 .dayOfWeek {
     text-align: left;
     position: absolute;
-    top: 0px;
+    top:0;
     left: 2px;
 }
 

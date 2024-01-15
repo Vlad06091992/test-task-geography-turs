@@ -11,27 +11,46 @@ const dateInput = document.querySelector('.dateInput')
 const eventInput = document.querySelector('.eventInput')
 const authorInput = document.querySelector('.authorInput')
 const createEventButton = document.querySelector('.createEvent')
-const formEvent = document.querySelector('.form-event')
+const formEvent = document.querySelector('.formEvent')
 const searchInput = document.querySelector('.searchInput')
 
 let dateOfEvent
 let author
 let eventDescription
 
+createEventButton.disabled = true;
+
+const checkStatusAddEventDescriptionButton = () => {
+    if (!dateOfEvent || !author || !eventDescription) {
+        createEventButton.disabled = true;
+    } else {
+        createEventButton.disabled = false;
+    }
+}
+
+[searchInput,dateInput,eventInput].forEach(el=>el.addEventListener('input',()=>{
+    checkStatusAddEventDescriptionButton()
+}))
+
 searchInput.addEventListener('input', (e) => {
     searchString = e.target.value
 })
 
-dateInput.addEventListener('change', (e) => {
+dateInput.addEventListener('input', (e) => {
     dateOfEvent = e.target.value
+    checkStatusAddEventDescriptionButton()
+
 })
 
-eventInput.addEventListener('change', (e) => {
+eventInput.addEventListener('input', (e) => {
     eventDescription = e.target.value
+    checkStatusAddEventDescriptionButton()
+
 })
 
-authorInput.addEventListener('change', (e) => {
+authorInput.addEventListener('input', (e) => {
     author = e.target.value
+    checkStatusAddEventDescriptionButton()
 })
 
 createEventButton.addEventListener('click', () => {
@@ -47,17 +66,17 @@ createEventButton.addEventListener('click', () => {
     }
     events.push(event)
     iterateDaysInCalendar()
-    formEvent.classList.remove('form-event-show')
+    formEvent.classList.remove('formEventShow')
     dateInput.value = authorInput.value = eventInput.value = ''
 })
 
 addButton.addEventListener('click', () => {
-    formEvent.classList.add('form-event-show')
+    formEvent.classList.add('formEventShow')
 })
+
 
 updateButton.addEventListener('click', () => {
     const {year, numberOfMonth, month} = findDate(searchString)
-
     if(year && numberOfMonth && (month || month ===0)){
         eventDay = numberOfMonth
         currentDate = new Date(year, month, numberOfMonth)
@@ -67,10 +86,11 @@ updateButton.addEventListener('click', () => {
         dateSpan.textContent = `${currentMonth} ${currentYear}`
         iterateDaysInCalendar()
     }
+    searchString = null
 })
 
 cancelButton.addEventListener('click', () => {
-    formEvent.classList.remove('form-event-show')
+    formEvent.classList.remove('formEventShow')
 })
 
 

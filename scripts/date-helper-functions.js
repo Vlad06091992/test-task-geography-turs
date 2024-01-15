@@ -52,7 +52,7 @@ function iterateDaysInCalendar() {
 
         const divEl = el.querySelector('.numberOfMonth');
         divEl.textContent = ''
-        divEl.classList.remove('active-months')
+        divEl.classList.remove('activeMonths')
         divEl.classList.remove('todayDay')
     }
 
@@ -66,7 +66,7 @@ function iterateDaysInCalendar() {
             let el = document.getElementById(`${index}`)
             el.classList.add('notActiveCell')
             const divEl = el.querySelector('.numberOfMonth');
-            divEl.classList.add('not-active-months')
+            divEl.classList.add('notActiveMonths')
             divEl.textContent = i.toString()
             index++
             el.appendChild(divEl)
@@ -76,7 +76,7 @@ function iterateDaysInCalendar() {
     index = 1
 
     for (let i = firstDayOfWeekIndex; i <= daysInMonth + firstDayOfWeekIndex; i++) {
-        if(eventDay + firstDayOfWeekIndex - 1 === i ){
+        if (eventDay + firstDayOfWeekIndex - 1 === i) {
             let el = document.getElementById(`${i}`)
             el.classList.add('activeCell')
         }
@@ -105,8 +105,8 @@ function iterateDaysInCalendar() {
 
 
         }
-        divEl.classList.remove('not-active-months')
-        divEl.classList.add('active-months')
+        divEl.classList.remove('notActiveMonths')
+        divEl.classList.add('activeMonths')
         divEl.textContent = index.toString()
         index++
         el.appendChild(divEl)
@@ -134,23 +134,25 @@ function getTodayDate() {
 }
 
 function findDate(arg) {
-    const [daySearch,monthSearch,yearSearch] = arg.split(' ')
+    const [daySearch, monthSearch, yearSearch] = arg.split(' ')
     let year
     let month
     let numberOfMonth
     events.forEach(el => {
-        if (el.author.toLowerCase().indexOf(arg.toLowerCase()) > -1  || el.eventDescription.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+        if (el.author.toLowerCase().indexOf(arg.toLowerCase()) > -1 || el.eventDescription.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
             year = el.date.year
             month = el.date.month
             numberOfMonth = el.date.numberOfMonth
             return
         }
 
-        if(+daySearch === el.date.numberOfMonth && el.date.month === +monthsRuWithDeclination[monthSearch] && +yearSearch === el.date.year ){
+        if (+daySearch === el.date.numberOfMonth && el.date.month === +monthsRuWithDeclination[monthSearch] && +yearSearch === el.date.year
+            || +daySearch === el.date.numberOfMonth && el.date.month === +monthsRuWithDeclination[monthSearch]
+        ) {
             year = el.date.year
             month = el.date.month
             numberOfMonth = el.date.numberOfMonth
         }
     })
-    return {month,year,numberOfMonth}
+    return {month, year, numberOfMonth}
 }
