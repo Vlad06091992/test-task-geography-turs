@@ -6,3 +6,4 @@ let daysInMonth
 let firstMondayDate
 let todayDayIndex
 let searchString
+let eventDay

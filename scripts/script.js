@@ -14,8 +14,6 @@ const createEventButton = document.querySelector('.createEvent')
 const formEvent = document.querySelector('.form-event')
 const searchInput = document.querySelector('.searchInput')
 
-console.log(formEvent)
-
 let dateOfEvent
 let author
 let eventDescription
@@ -48,7 +46,6 @@ createEventButton.addEventListener('click', () => {
         },
     }
     events.push(event)
-    console.log(events)
     iterateDaysInCalendar()
     formEvent.classList.remove('form-event-show')
     dateInput.value = authorInput.value = eventInput.value = ''
@@ -59,14 +56,10 @@ addButton.addEventListener('click', () => {
 })
 
 updateButton.addEventListener('click', () => {
-
-    console.log(searchString)
-
     const {year, numberOfMonth, month} = findDate(searchString)
 
-    console.log(year,month,numberOfMonth)
-
     if(year && numberOfMonth && (month || month ===0)){
+        eventDay = numberOfMonth
         currentDate = new Date(year, month, numberOfMonth)
         currentMonthIndex = month;
         currentMonth = monthsRu[currentMonthIndex];
@@ -74,7 +67,6 @@ updateButton.addEventListener('click', () => {
         dateSpan.textContent = `${currentMonth} ${currentYear}`
         iterateDaysInCalendar()
     }
-
 })
 
 cancelButton.addEventListener('click', () => {

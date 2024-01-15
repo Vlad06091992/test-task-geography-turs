@@ -16,11 +16,12 @@ function getMonthData() {
 function getFirstDayOfWeekIndex(year, month) {
     const firstDayOfMonth = new Date(year, month, 1);
     let dayOfWeek = firstDayOfMonth.getDay();
-    dayOfWeek = (dayOfWeek === 0) ? 7 : dayOfWeek;
-    return dayOfWeek;
+    return (dayOfWeek === 0) ? 7 : dayOfWeek;
 }
 
+
 function updateDate() {
+    eventDay = null
     currentYear = currentDate.getUTCFullYear();
     currentMonthIndex = currentDate.getUTCMonth();
     currentMonth = monthsRu[currentMonthIndex];
@@ -38,31 +39,30 @@ const setCurrentDate = (to) => {
 
 
 function iterateDaysInCalendar() {
+    searchInput.value = ''
     getTodayDate()
-
+    let firstDayOfWeekIndex = getFirstDayOfWeekIndex(currentYear, currentMonthIndex);
     for (let i = 1; i <= 42; i++) {
         const el = document.getElementById(`${i}`)
         el.querySelector('.author').textContent = ''
         el.querySelector('.description').textContent = ''
         el.classList.remove('notActiveCell')
         el.classList.remove('todayCell')
+        el.classList.remove('activeCell')
+
         const divEl = el.querySelector('.numberOfMonth');
         divEl.textContent = ''
         divEl.classList.remove('active-months')
         divEl.classList.remove('todayDay')
     }
 
-// debugger
-
-
     let index = 1
-    let firstDayOfWeekIndex = getFirstDayOfWeekIndex(currentYear, currentMonthIndex);
+
 
     if (firstDayOfWeekIndex > 1) {
         const daysToFill = firstDayOfWeekIndex - 1
         let daysInPrevMonth = new Date(currentYear, currentMonthIndex - 1).daysInMonth()
         for (let i = daysInPrevMonth - daysToFill + 1; i <= daysInPrevMonth; i++) {
-
             let el = document.getElementById(`${index}`)
             el.classList.add('notActiveCell')
             const divEl = el.querySelector('.numberOfMonth');
@@ -76,6 +76,10 @@ function iterateDaysInCalendar() {
     index = 1
 
     for (let i = firstDayOfWeekIndex; i <= daysInMonth + firstDayOfWeekIndex; i++) {
+        if(eventDay + firstDayOfWeekIndex - 1 === i ){
+            let el = document.getElementById(`${i}`)
+            el.classList.add('activeCell')
+        }
         for (let j = 0; j < events.length; j++) {
             if (events[j].date.month === currentMonthIndex
                 && events[j].date.numberOfMonth + firstDayOfWeekIndex - 1 === i &&
@@ -98,6 +102,8 @@ function iterateDaysInCalendar() {
                 divEl.classList.add('todayDay')
                 el.classList.add('todayCell')
             }
+
+
         }
         divEl.classList.remove('not-active-months')
         divEl.classList.add('active-months')
@@ -114,8 +120,6 @@ function iterateDaysInCalendar() {
             let el = document.getElementById(`${i}`)
             el.classList.add('notActiveCell')
             const divEl = el.querySelector('.numberOfMonth');
-            // divEl.classList.add('not-active-months')
-            // divEl.classList.add('numberOfMonth')
             divEl.textContent = nextMonthStart.toString()
             nextMonthStart++
             el.appendChild(divEl)
@@ -142,13 +146,11 @@ function findDate(arg) {
             return
         }
 
-
         if(+daySearch === el.date.numberOfMonth && el.date.month === +monthsRuWithDeclination[monthSearch] && +yearSearch === el.date.year ){
             year = el.date.year
             month = el.date.month
             numberOfMonth = el.date.numberOfMonth
         }
-
     })
     return {month,year,numberOfMonth}
 }
