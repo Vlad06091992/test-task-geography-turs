@@ -28,7 +28,7 @@ function updateDate() {
 }
 
 
-const setCurrentDate = (to) => {
+function setCurrentDate  (to)  {
     if (to === 'today') {
         currentDate = new Date()
     } else {
@@ -57,7 +57,6 @@ function iterateDaysInCalendar() {
     }
 
     let index = 1
-
 
     if (firstDayOfWeekIndex > 1) {
         const daysToFill = firstDayOfWeekIndex - 1
@@ -102,8 +101,6 @@ function iterateDaysInCalendar() {
                 divEl.classList.add('todayDay')
                 el.classList.add('todayCell')
             }
-
-
         }
         divEl.classList.remove('notActiveMonths')
         divEl.classList.add('activeMonths')
@@ -120,6 +117,7 @@ function iterateDaysInCalendar() {
             let el = document.getElementById(`${i}`)
             el.classList.add('notActiveCell')
             const divEl = el.querySelector('.numberOfMonth');
+            divEl.classList.add('notActiveMonths')
             divEl.textContent = nextMonthStart.toString()
             nextMonthStart++
             el.appendChild(divEl)
