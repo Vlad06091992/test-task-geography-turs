@@ -28,10 +28,11 @@ function updateDate() {
 }
 
 
-function setCurrentDate  (to)  {
+function setCurrentDate(to) {
     if (to === 'today') {
         currentDate = new Date()
     } else {
+        currentDate.setDate(15)
         currentDate.setMonth(currentDate.getMonth() + (to === 'next' ? +1 : -1))
     }
     updateDate()
