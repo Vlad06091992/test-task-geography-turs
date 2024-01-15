@@ -48,8 +48,8 @@ button {
 }
 
 .header {
-    padding: 20px 10px;
-    height: 50px;
+    padding: 40px 10px 10px;
+    /*height: 50px;*/
     background: rgba(128, 128, 128, 0.2);
 }
 
